@@ -3,9 +3,9 @@
 ## Design Patterns Applied
 
 ### 1. Factory Pattern (PizzaFactory)
-**SOLID Principles Adhered:**
-- **Single Responsibility Principle (SRP):** The `PizzaFactory` has a single responsibility of creating pizza objects.
-- **Open/Closed Principle (OCP):** The factory can be extended to create new pizza types without modifying existing code.
+**SOLID Principles:**
+- **Single Responsibility Principle:** The `PizzaFactory` has a single responsibility of    creating pizza objects.
+- **Open/Closed Principle:** The factory can create new pizza types without modifying existing code.
 
 **Implementation:**
 ```python
@@ -19,9 +19,9 @@ class PizzaFactory:
 ```
 
 ### 2. Singleton Pattern (InventoryManager)
-**SOLID Principles Adhered:**
-- **Single Responsibility Principle (SRP):** Manages inventory with a single point of control.
-- **Dependency Inversion Principle (DIP):** Provides a global point of access to inventory management.
+**SOLID Principles:**
+- **Single Responsibility Principle:** Manages inventory with only one instance to control.
+- **Dependency Inversion Principle:** Provides a global instance access to inventory management.
 
 **Implementation:**
 ```python
@@ -36,10 +36,10 @@ class InventoryManager:
 ```
 
 ### 3. Strategy Pattern (PaymentStrategy)
-**SOLID Principles Adhered:**
-- **Single Responsibility Principle (SRP):** Each payment method has its own implementation.
-- **Open/Closed Principle (OCP):** New payment methods can be added without modifying existing code.
-- **Liskov Substitution Principle (LSP):** Different payment strategies can be used interchangeably.
+**SOLID Principles:**
+- **Single Responsibility Principle:** Each payment method has its own implementation.
+- **Open/Closed Principle:** New payment methods can be added without modifying existing code.
+- **Liskov Substitution Principle:** Different payment strategies can be used without any errors in the system.
 
 **Implementation:**
 ```python
@@ -58,9 +58,9 @@ class CreditCardPayment(PaymentStrategy):
 ```
 
 ### 4. Abstract Base Class Pattern (Pizza)
-**SOLID Principles Adhered:**
-- **Single Responsibility Principle (SRP):** Defines a common interface for pizza objects.
-- **Liskov Substitution Principle (LSP):** Allows different pizza types to be used interchangeably.
+**SOLID Principles :**
+- **Single Responsibility Principle:** makes an interface for pizza objects.
+- **Liskov Substitution Principle :** Allows different pizza types to be used without problems.
 
 **Implementation:**
 ```python
@@ -71,37 +71,35 @@ class Pizza(ABC):
         self._toppings = []
 
     def get_description(self):
-        # Common implementation for all pizza types
         ...
 ```
 
 ## Detailed SOLID Principle Analysis
 
-### Single Responsibility Principle (SRP)
-- Each class has a single, well-defined responsibility:
+### Single Responsibility Principle
+- Each class has a single responsibility:
   - `PizzaFactory` creates pizzas
   - `InventoryManager` manages inventory
   - `PaymentStrategy` handles payment methods
-  - `Pizza` manages pizza-related operations
+  - `Pizza` manages pizza operations
 
-### Open/Closed Principle (OCP)
+### Open/Closed Principle 
 - The system allows extension without modification:
   - New pizza types can be added to `PizzaFactory`
   - New payment methods can be added by implementing `PaymentStrategy`
-  - New toppings can be easily incorporated into the existing structure
+  - New toppings can be easily added into the existing methods
 
-### Liskov Substitution Principle (LSP)
-- Derived classes can be used interchangeably:
+### Liskov Substitution Principle
+- Derived classes can be used without problems:
   - Different pizza types inherit from the base `Pizza` class
-  - Payment strategies can be swapped without changing the core logic
+  - Payment strategies can be swapped without changing the logic
 
-### Interface Segregation Principle (ISP)
-- Interfaces are kept minimal and focused:
+### Interface Segregation Principle
+- Interfaces are focused:
   - `PaymentStrategy` has a single method `pay()`
-  - `Pizza` has clear, minimal interface methods
+  - `Pizza` has clear interface methods
 
-### Dependency Inversion Principle (DIP)
-- High-level modules depend on abstractions:
+### Dependency Inversion Principle
+- some classes depends on abstractions:
   - `PaymentStrategy` is an abstract base class
   - `InventoryManager` provides a global access point
-  - Concrete implementations depend on abstract interfaces
