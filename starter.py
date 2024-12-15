@@ -2,26 +2,26 @@ from abc import ABC, abstractmethod
 
 class Pizza(ABC):
     @abstractmethod
-    def get_description(self) -> str:
+    def get_description(self):
         pass
 
     @abstractmethod
-    def get_cost(self) -> float:
+    def get_cost(self):
         pass
 
 # Concrete Pizza Classes
 class MargheritaPizza(Pizza):
-    def get_description(self) -> str:
+    def get_description(self):
         return "Margherita"
 
-    def get_cost(self) -> float:
+    def get_cost(self):
         return 5.0
 
 class PepperoniPizza(Pizza):
-    def get_description(self) -> str:
+    def get_description(self):
         return "Pepperoni"
 
-    def get_cost(self) -> float:
+    def get_cost(self):
         return 6.0
 
 # topping.py
@@ -30,24 +30,24 @@ class ToppingDecorator(Pizza):
         self._pizza = pizza
 
 class Cheese(ToppingDecorator):
-    def get_description(self) -> str:
+    def get_description(self):
         return f"{self._pizza.get_description()} + Cheese"
 
-    def get_cost(self) -> float:
+    def get_cost(self):
         return self._pizza.get_cost() + 1.0
 
 class Olives(ToppingDecorator):
-    def get_description(self) -> str:
+    def get_description(self):
         return f"{self._pizza.get_description()} + Olives"
 
     def get_cost(self) -> float:
         return self._pizza.get_cost() + 0.5
 
 class Mushrooms(ToppingDecorator):
-    def get_description(self) -> str:
+    def get_description(self):
         return f"{self._pizza.get_description()} + Mushrooms"
 
-    def get_cost(self) -> float:
+    def get_cost(self):
         return self._pizza.get_cost() + 0.7
 
 # inventory_manager.py
